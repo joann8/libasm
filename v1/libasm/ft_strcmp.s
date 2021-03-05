@@ -45,9 +45,10 @@ equal:
 
 end_of_string:
 	cmp dl, cl
-	jg dl_bigger
-	jb cl_bigger
 	je equal
+	cmp dl, 0
+	je cl_bigger
+	jmp dl_bigger
 
 done:
 	mov rsp, rbp
