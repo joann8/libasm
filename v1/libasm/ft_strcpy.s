@@ -4,13 +4,13 @@ section .text
 ft_strcpy:
 	push rbp
 	mov rbp, rsp
-	xor rdx, rdx
+	xor rdx, rdx ; set rdx to 0
 
 copy:
-	cmp [rsi + rdx], byte 0
+	cmp [rsi + rdx], byte 0 ; rsi is the 2nd arg = src
 	je done
 	mov cl, [rsi + rdx]
-	mov [rdi + rdx], cl
+	mov [rdi + rdx], cl ; rdi is the first arg = dest
 	inc rdx
 	jmp copy
 

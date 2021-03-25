@@ -7,15 +7,15 @@ ft_strcmp:
 	xor rax, rax
 
 comparison:
-	mov dl, [rdi]
-	mov cl, [rsi]	
+	mov dl, [rdi] ; rdi is 1st arg = s1
+	mov cl, [rsi] ; rsi is 2nd arg = s2	
 	cmp dl, 0
 	je end_of_string
 	cmp cl, 0
 	je end_of_string
 	cmp dl, cl
 	jg dl_bigger
-	jb cl_bigger
+	jl cl_bigger
 
 loop:
 	inc rdi
@@ -29,7 +29,7 @@ loop:
 	cmp dl, cl
 	je loop
 	jg dl_bigger
-	jb cl_bigger
+	jl cl_bigger
 
 dl_bigger:
 	mov rax, 1
