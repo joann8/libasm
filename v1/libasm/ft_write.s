@@ -7,7 +7,7 @@ ft_write:
 	mov rbp, rsp
 
 write:
-	mov rax, 1 ;1 is SYS_WRITE
+	mov rax, 1 ; 1 is SYS_WRITE
 	syscall
 	cmp rax, 0
 	jge done

@@ -12,20 +12,20 @@ start:
 	je done
 	cmp rsi, 0
 	je done
-	push rdi	 ; store *list_start
-	push rsi	 ; store *data
-	mov rdi, 16
+	push rdi	 ; store begin_start
+	push rsi	 ; store data
+	mov rdi, 16  ; rdi is going to be call by malloc  
 	call malloc wrt ..plt
 	pop rsi
 	pop rdi
 	cmp rax, 0  ; erreur malloc
 	je done
-	mov rcx, [rsi]
-	mov [rax], rcx   ; lst = data
-	xor rcx, rcx
-	mov rcx, [rdi]
-	mov [rax + 8], rcx ; lst->next = list_start
-	mov [rdi], rax      ; lst_start = lst
+	mov rcx, [rsi]   ; rcx = *data
+	mov [rax], rcx   ; [rax] = lst->data = data
+	xor rcx, rcx     
+	mov rcx, [rdi]      ; rcx = *begin_list
+	mov [rax + 8], rcx  ; lst->next = *begin_list
+	mov [rdi], rax      ; *begin_list = rax = lst
 	
 done:
 	mov rsp, rbp

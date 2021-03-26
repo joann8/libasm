@@ -6,11 +6,12 @@
 /*   By: jacher <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 17:17:31 by jacher            #+#    #+#             */
-/*   Updated: 2021/03/25 20:35:37 by jacher           ###   ########.fr       */
+/*   Updated: 2021/03/26 15:58:55 by jacher           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test_libasm.h"
+#include "libasm.h"
+
 
 t_list	*ft_lstnew(void *content)
 {
@@ -127,37 +128,3 @@ void test_ft_list_push_front(int ac, char **av)
 	
 	printf("\n**** END TEST FT_ADD_FRONT ****\n\n");
 }
-
-void test_ft_list_sort(int ac, char **av)
-{
-	printf("\n**** START TEST FT_SORT ****\n");
-	printf("\nThe test list are the the command line arguments:\n");
-	
-	t_list	*l;
-	int 	i;
-
-	l = NULL;
-	i = 0;
-	while (i < ac)
-	{
-		ft_lstadd_front(&l, ft_lstnew((void *)av[i]));
-		i++;
-	}
-	printf("Before sorting :\n");
-	print_list(l);
-	
-	printf("After ft_list_sort:\n");
-	ft_list_sort(&l, &strcmp);
-	print_list(l);
-
-	printf("\nThe test with NULL pointer:\n");
-	printf("Before sorting :\n");
-	print_list(l);
-	printf("After ft_list_sort:\n");
-	ft_list_sort(NULL, &strcmp);
-	print_list(l);
-
-	printf("\n**** END TEST FT_LIST_SORT ****\n\n");
-}
-
-

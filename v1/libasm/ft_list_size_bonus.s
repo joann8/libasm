@@ -1,7 +1,7 @@
 section .text
 	global ft_list_size
 
-ft_list_size:
+ft_list_size: ; rdi = begin_list
 	push rbp
 	mov rbp, rsp
 	xor rax, rax
